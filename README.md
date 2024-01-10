@@ -7,7 +7,7 @@ Before building the ROS Docker image, make sure you have Docker installed on you
 ### Docker Installation:
 
 1. **Linux:**
-   - Follow the instructions on the [official Docker website](https://docs.docker.com/engine/install/) to install Docker on Linux.
+   - Follow the instructions on the [official Docker website](https://docs.docker.com/desktop/install/linux-install/) to install Docker on Linux.
 
 2. **Windows:**
    - Download and install Docker Desktop from the [official Docker website](https://docs.docker.com/desktop/install/windows-install/).
