@@ -1,7 +1,6 @@
 # Use the base image
 FROM tiryoh/ros-desktop-vnc:melodic
 
-
 # Create and set up ROS workspace
 RUN mkdir -p /home/ubuntu/catkin_ws/src
 WORKDIR /home/ubuntu/catkin_ws/src
@@ -59,23 +58,31 @@ RUN /bin/bash -c "./Tools/environment_install/install-prereqs-ubuntu.sh -y"
 #RUN echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
 
 RUN pip install PyYAML mavproxy --user
-RUN ./sim_vehicle.py -v ArduSub -l 55.60304,12.808937,0,0 --map --console
+RUN ./sim_vehicle.py -v ArduSub -l 55.60304,12.808937,0,0 --out=tcp:172.31.144.1:14550 --map --console
 
-ros-melodic-geodesy
-ros-melodic-geographic-msgs
+RUN sudo apt-get install ros-melodic-geodesy
+RUN sudo apt-get install ros-melodic-geographic-msgs
 
-/opt/ros/melodic/lib/mavros$ ./install_geographiclib_datasets.sh 
-ros-melodic-joy
+WORKDIR /opt/ros/melodic/lib/mavros
+RUN /bin/bash -c "./install_geographiclib_datasets.sh"
+RUN sudo apt-get install ros-melodic-joy
 
-roslaunch bluerov2_bringup bringup_ardusub_sitl.launch use_joystick:=false gazebo:=true
+# run sitl
+# roslaunch bluerov2_bringup bringup_ardusub_sitl.launch use_joystick:=false gazebo:=true
 
 # Install QGroundcontrol
-sudo usermod -a -G dialout $USER
-sudo apt-get remove modemmanager -y
-sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
-sudo apt install libqt5gui5 -y
-sudo apt install libfuse2 -y
-sudo apt install fuse -y
+RUN sudo usermod -a -G dialout $USER
+RUN sudo apt-get remove modemmanager -y
+RUN sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y
+RUN sudo apt install libqt5gui5 -y
+RUN sudo apt install libfuse2 -y
+RUN sudo apt install fuse -y
 
-wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage
-chmod +x ./QGroundControl.AppImage
+#wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage
+# https://github.com/mavlink/qgroundcontrol/issues/10016
+
+RUN mkdir -p /home/ubuntu/qgc
+WORKDIR /home/ubuntu/qgc
+RUN wget https://github.com/mavlink/qgroundcontrol/releases/download/v4.1.5/QGroundControl.AppImage
+RUN chmod +x ./QGroundControl.AppImage
+RUN sudo apt-get update && sudo apt-get -y --quiet --no-install-recommends install apt-utils binutils build-essential ca-certificates ccache checkinstall cmake curl espeak fuse g++ gcc git gosu kmod libespeak-dev libfontconfig1 libfuse2 libgstreamer-plugins-base1.0-dev libgstreamer1.0-0 libgstreamer1.0-dev libsdl2-dev libssl-dev libudev-dev locales make ninja-build openssh-client openssl patchelf pkg-config rsync speech-dispatcher wget xvfb zlib1g-dev 
