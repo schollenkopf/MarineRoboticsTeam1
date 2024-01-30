@@ -25,7 +25,7 @@ git clone https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-rob
 ### Navigate to the Docker folder inside the cloned repository:
 
 ```bash
-cd 34763-autonomous-marine-robotics/docker
+cd 34763-autonomous-marine-robotics/docker/noetic-minimum
 ```
 
 ### Build Instructions:
