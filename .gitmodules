@@ -1,0 +1,3 @@
+[submodule "docker-qgc-vnc"]
+	path = docker-qgc-vnc
+	url = https://github.com/yaqub93/docker-qgc-vnc.git
