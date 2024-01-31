@@ -51,6 +51,10 @@ Once the Docker container is running, you can access the VNC server through your
 [http://127.0.0.1:6080/](http://127.0.0.1:6080/)
 
 
-
-
 ## Usage
+
+Open terminal and do:
+
+```bash
+roslaunch bluerov2_gazebo start_pid_demo.launch
+```
