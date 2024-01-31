@@ -25,7 +25,11 @@ git clone https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-rob
 ### Navigate to the Docker folder inside the cloned repository:
 
 ```bash
+<<<<<<< HEAD
 cd 34763-autonomous-marine-robotics/docker/noetic-minimum
+=======
+cd 34763-autonomous-marine-robotics/docker
+>>>>>>> origin/main
 ```
 
 ### Build Instructions:
@@ -50,6 +54,7 @@ Once the Docker container is running, you can access the VNC server through your
 
 [http://127.0.0.1:6080/](http://127.0.0.1:6080/)
 
+<<<<<<< HEAD
 
 ## Usage
 
@@ -58,3 +63,9 @@ Open terminal and do:
 ```bash
 roslaunch bluerov2_gazebo start_pid_demo.launch
 ```
+=======
+
+
+
+## Usage
+>>>>>>> origin/main
