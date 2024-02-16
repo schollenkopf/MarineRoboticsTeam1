@@ -6,12 +6,15 @@ import json
 import pymap3d as pm
 import copy
 from shapely import Polygon, LineString
+import os 
 
 class Env:
     def __init__(self):
 
         # Load the data from the pickle file
-        with open('Sampling_based_Planning\\data\\seachart.json', 'r') as f:
+        file_name_list = ['Sampling_based_Planning','data','seachart.json']
+        file_name = os.path.join(*file_name_list)
+        with open(file_name, 'r') as f:
             land_polygons = json.load(f)
         land_polygons = land_polygons["land"]
 
