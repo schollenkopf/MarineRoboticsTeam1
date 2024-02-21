@@ -79,7 +79,7 @@ To build the Docker image and create the container
 Open a `powershell` terminal and run
 
 ```bash
-sh ./scripts/build_and_create_docker.sh
+sh scripts/build_and_create_docker.sh
 
 ```
 
