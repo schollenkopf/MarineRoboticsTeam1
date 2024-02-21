@@ -53,7 +53,7 @@ cd ~/34763-autonomous-marine-robotics
 Now you can add the `url` to your forked version of the repo by running the following
 
 ```bash
-git remote add-url personal_repo <url>
+git remote add personal_repo <url>
 ```
 
 where the `<url>` is the url you copied earlier.
