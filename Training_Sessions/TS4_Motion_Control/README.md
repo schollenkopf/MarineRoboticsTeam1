@@ -15,7 +15,20 @@ Begin by starting your Docker container.
   ./scripts/start_container.sh
 
 ### Step 2: Running the Simulator
+
 - Open a new terminal.
+- Go to the ROS workspace for the training session 4:
+  ```
+  cd 34763-autonomous-marine-robotics/Training_Sessions/TS4_Motion_Control/ts4_ws
+  ```
+- Compile the workspace:
+  ```
+  catkin_make
+  ```
+- Source the compiled file:
+  ```
+  source devel/setup.bash
+  ```
 - Launch the simulator by running:
   ```
   roslaunch ts4_pid_tuning start_pid_demo.launch gui:=false
@@ -30,7 +43,11 @@ This launch file initiates several processes including:
 > Note: The Gazebo GUI is now turned off, you can turn it on by `gui:=true`
 
 ### Step 3: Running the ROS Node
-- Open another terminal.
+- Open another terminal by opening a new tab.
+- Source the compiled file:
+  ```
+  source devel/setup.bash
+  ```
 - Execute the ROS node to publish velocity and position references to the robot:
   ```
   rosrun ts4_pid_tuning ts4_command.py
