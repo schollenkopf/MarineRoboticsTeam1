@@ -2,7 +2,14 @@
 __pycache__/
 ros_ws/devel/
 ros_ws/build/
-
+*.bag
+*.bag.active
+*.autosave
+*.asv
+devel/
+build/
+.catkin_workspace
+.slxc
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
