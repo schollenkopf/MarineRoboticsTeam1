@@ -76,12 +76,7 @@ To build the Docker image and create the container
 
 #### Building on Windows
 
-Open a `powershell` terminal and run
-
-```bash
-sh scripts/build_and_create_docker.sh
-
-```
+To build and create the docker container, please follow this [guide](/windows_build_guide.md).
 
 #### Building on Linux
 
