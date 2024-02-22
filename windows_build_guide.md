@@ -17,6 +17,7 @@ For example:
 ### Step 2 - Run the script
 
 Run the script:
+
 ```bash
 sh scripts/windows_build_and_create_docker.sh
 ```
