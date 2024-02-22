@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="covariance" default="1.92263918e-05"/>
+  <!--arg name="bag_file" default="$(find ts5_pose_estimation)/data/BLUEROV2HEAVY_STATIONARY_SENSOR_NOISE_BAG.bag"/-->
+  <arg name="bag_file" default="$(find ts5_pose_estimation)/data/ZIGZAG2.bag"/>
+  <arg name="optional_rosbag_args" default=""/>
+  <param name="use_sim_time" value="true"/>
+  
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_state_estimator" clear_params="true">
+    <rosparam command="load" file="$(find ts5_pose_estimation)/config/ekf_params.yaml" />
+  </node>
+  
+  <node pkg="rosbag" type="play" name="playback" args="--bags $(arg bag_file) --clock --pause $(arg optional_rosbag_args)" output="screen"/>
+
+  <!--node pkg="ts5_pose_estimation" type="republish_depth_as_pose.py" name="depth2pose">
+      <remap from="depth" to="/bluerov2/mavros/scaled_pressure2/depth"/>
+      <remap from="pose" to="/bluerov2/mavros/scaled_pressure2/depth/pose"/>
+      <param name="frame_id" value="bluerov2/map_ned"/>
+      <param name="depth_covariance" value="$(arg covariance)"/>
+  </node-->
+
+    <node pkg="ts5_pose_estimation"
+          type="odometry_to_path.py"
+          name="odometry_to_path_ekf"
+          output="screen">
+          <remap from="/bluerov2/pose_gt" to="/odometry/filtered"/>
+          <remap from="/bluerov2/path_gt" to="/odometry_path_ekf"/>
+    </node>
+
+    <node pkg="ts5_pose_estimation"
+          type="pose_stamped_to_path.py"
+          name="pose_stamped_to_path_gt"
+          output="screen">
+          <remap from="/bluerov2/path_gt" to="/odometry_path_gt"/>
+    </node>
+  
+      <!-- Start RViz  -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find ts5_pose_estimation)/rviz/bag_pose_estimation.rviz"/>
+    
+</launch>
