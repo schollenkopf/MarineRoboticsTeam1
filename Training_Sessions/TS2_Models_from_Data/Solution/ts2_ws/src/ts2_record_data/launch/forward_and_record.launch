@@ -1,0 +1,24 @@
+<launch>
+    <arg name="record_directory" default="/home/ubuntu/34763-autonomous-marine-robotics/Training_Sessions/TS2_Models_from_Data/"/>
+
+    <node pkg="ts2_record_data"
+          type="steps_forward.py"
+          name="steps_forward"
+          output="screen">
+    </node>
+
+    <node pkg="rosbag"
+          type="record"
+          name="record_bluerov2_data"
+          args="record -o $(arg record_directory) /bluerov2/cmd_vel /bluerov2/pose_gt 
+          /bluerov2/thrusters/0/thrust /bluerov2/thrusters/1/thrust /bluerov2/thrusters/2/thrust /bluerov2/thrusters/3/thrust 
+          /bluerov2/thrusters/4/thrust /bluerov2/thrusters/5/thrust" 
+          output="screen">
+    </node>
+
+    <node name="vel_linear_plot"
+            pkg="rqt_plot"
+            type="rqt_plot"
+            args="/bluerov2/cmd_vel/linear/x /bluerov2/pose_gt/twist/twist/linear/x" />
+
+</launch>

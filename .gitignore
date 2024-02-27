@@ -3,8 +3,9 @@ __pycache__/
 ros_ws/devel/
 ros_ws/build/
 #*.bag
-Training_Sessions/TS5_Underwater_Navigation/*.bag
+Training_Sessions/TS2_Models_from_Data/*.bag
 Training_Sessions/TS4_Motion_Control/*.bag
+Training_Sessions/TS5_Underwater_Navigation/*.bag
 Training_Sessions/TS5_Underwater_Navigation/
 *.bag.active
 *.autosave
@@ -132,3 +133,5 @@ Temporary Items
 # iCloud generated files
 *.icloud
 Training_Sessions/TS5_Underwater_Navigation/ts5_ws/src/CMakeLists.txt
+Training_Sessions/TS2_Models_from_Data/Solution/ts2_ws/src/CMakeLists.txt
+ros_ws/src/CMakeLists.txt
