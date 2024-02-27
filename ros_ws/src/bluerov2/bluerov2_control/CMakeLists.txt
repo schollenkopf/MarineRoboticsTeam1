@@ -198,6 +198,9 @@ include_directories(
 ## ADDED
 catkin_install_python(PROGRAMS
     scripts/set_gm_current.py
+    scripts/odom_quat_to_euler.py
+    scripts/odometry_to_path.py
+    scripts/pose_stamped_to_euler.py
     src/bluerov/bin/user_mav
     src/bluerov/bin/video
     src/bluerov/sitl.py
