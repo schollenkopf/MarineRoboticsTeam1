@@ -12,9 +12,9 @@ Additionally, you'll find the `CMakeLists.txt` file in this directory. Copy it t
 Training_Sessions\TS1_Introduction_to_Simulation\ts1_ws\src\ts1_simple_command
 ```
 
-To rebuild the ROS workspace, please refer to the [following guide](./Training_Sessions/TS1_Introduction_to_Simulation/README.md#### Build the project) .
+To rebuild the ROS workspace, please refer to the following [guide](./Training_Sessions/TS1_Introduction_to_Simulation#build-the-project).
 
-After rebuilding the workspace, proceed to run the simulator by following the instructions provided in the `Readme.md` file under the section labeled "Exercise 1 - Starting Simulation."
+After rebuilding the workspace, proceed to run the simulator by following the instructions provided [here](./Training_Sessions/TS1_Introduction_to_Simulation#exercise-1-starting-simulation)
 
 Finally, execute the Python program by running the command:
 
