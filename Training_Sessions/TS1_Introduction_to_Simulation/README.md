@@ -301,6 +301,20 @@ if __name__ == '__main__':
 
 The actual file can be found at: `/home/ubuntu/34763-autonomous-marine-robotics/Training_Sessions/TS1_Introduction_to_Simulation/ts1_ws/src/ts1_simple_command/src/square_wave_surge_command.py`
 
+#### Build the project
+
+Go to the workspace folder:
+
+    cd /home/ubuntu/34763-autonomous-marine-robotics/Training_Sessions/TS1_Introduction_to_Simulation/ts1_ws/
+
+Compile
+
+    catkin_make
+
+Source
+
+    source devel/setup.bash
+
 #### Running the file
 
 Now try and run the above file using the following command

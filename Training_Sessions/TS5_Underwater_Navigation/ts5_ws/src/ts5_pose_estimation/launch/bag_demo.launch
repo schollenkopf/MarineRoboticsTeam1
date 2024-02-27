@@ -2,7 +2,7 @@
 <launch>
   <arg name="covariance" default="1.92263918e-05"/>
   <!--arg name="bag_file" default="$(find ts5_pose_estimation)/data/BLUEROV2HEAVY_STATIONARY_SENSOR_NOISE_BAG.bag"/-->
-  <arg name="bag_file" default="$(find ts5_pose_estimation)/data/ZIGZAG2.bag"/>
+  <arg name="bag_file" default="$(find ts5_pose_estimation)/data/SURGE.bag"/>
   <arg name="optional_rosbag_args" default=""/>
   <param name="use_sim_time" value="true"/>
   

@@ -5,6 +5,7 @@ ros_ws/build/
 #*.bag
 Training_Sessions/TS5_Underwater_Navigation/*.bag
 Training_Sessions/TS4_Motion_Control/*.bag
+Training_Sessions/TS5_Underwater_Navigation/*
 *.bag.active
 *.autosave
 *.asv
