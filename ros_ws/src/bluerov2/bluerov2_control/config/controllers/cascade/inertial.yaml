@@ -1,7 +1,7 @@
 pid:
   mass: 15.0
   inertial:
-    ixx: 5.0
+    ixx: 15.0
     ixy: 0
     ixz: 0
     iyy: 10.0

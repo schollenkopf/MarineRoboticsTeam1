@@ -135,3 +135,5 @@ Temporary Items
 Training_Sessions/TS5_Underwater_Navigation/ts5_ws/src/CMakeLists.txt
 Training_Sessions/TS2_Models_from_Data/Solution/ts2_ws/src/CMakeLists.txt
 ros_ws/src/CMakeLists.txt
+Training_Sessions/TS4_Motion_Control/ts4_ws/src/CMakeLists.txt
+Training_Sessions/TS3_Path_Planning/Solution/ts3_ws/src/CMakeLists.txt

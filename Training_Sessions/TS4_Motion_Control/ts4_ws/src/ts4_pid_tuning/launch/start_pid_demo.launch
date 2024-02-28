@@ -67,6 +67,12 @@
             type="rqt_plot"
             args="/bluerov2/cmd_euler_angle/z /bluerov2/euler_angle_gt/z" />
 
+    <node pkg="rqt_reconfigure"
+          type="rqt_reconfigure"
+          name="rqt_reconfigure"
+          output="screen">
+    </node>
+
     <!-- Start RViz  -->
     <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find bluerov2_control)/rviz/bluerov2_control.rviz"/>
     

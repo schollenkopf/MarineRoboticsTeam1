@@ -17,22 +17,22 @@
    </include>
    
   <group ns="$(arg uuv_name)">
-    <rosparam file="$(find bluerov2_control)/config/controllers/cascade/inertial.yaml" command="load"/>
-    <rosparam file="$(find bluerov2_control)/config/controllers/cascade/vel_pid_control.yaml" command="load"/>
+    <rosparam file="$(find ts4_cascaded_pid)/config/bluerov2/inertial.yaml" command="load"/>
+    <rosparam file="$(find ts4_cascaded_pid)/config/bluerov2/vel_pid_control.yaml" command="load"/>
     <rosparam file="$(find ts4_pid_tuning)/config/pos_pid_control.yaml" command="load"/>
 
-    <node pkg="uuv_control_cascaded_pid" type="AccelerationControl.py" name="acceleration_control"
+    <node pkg="ts4_cascaded_pid" type="AccelerationControl.py" name="acceleration_control"
           output="screen">
       <param name="tf_prefix" type="string" value="$(arg uuv_name)/" />
     </node>
 
-    <node pkg="uuv_control_cascaded_pid" type="VelocityControl.py" name="velocity_control"
+    <node pkg="ts4_cascaded_pid" type="VelocityControl.py" name="velocity_control"
           output="screen">
       <remap from="odom" to="/$(arg uuv_name)/pose_gt"/>
       <remap from="cmd_accel" to="/$(arg uuv_name)/cmd_accel"/>
     </node>
 
-    <node pkg="uuv_control_cascaded_pid" type="PositionControl.py" name="position_control"
+    <node pkg="ts4_cascaded_pid" type="PositionControl.py" name="position_control"
           output="screen">
       <remap from="odom" to="/$(arg uuv_name)/pose_gt"/>
     </node>

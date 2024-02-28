@@ -1,0 +1,26 @@
+<launch>
+
+    <include file="$(find grid_map_demos)/launch/grid_map_loader_demo.launch"/>
+    <!--node name="grid_to_occ" pkg="ts3_path_planning" type="grid_to_occ" output="screen"/-->
+	<node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud" output="screen" args="$(find grid_map_pcl)/data/input_cloud.pcd">
+		<param name="frame_id" value="map" />
+		<param name="interval" value="1" />
+	</node>
+
+    
+	<node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+		<param name="resolution" value="1" />
+		<!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
+		<param name="frame_id" type="string" value="map" />
+		<!-- maximum range to integrate (speedup!) -->
+		<param name="sensor_model/max_range" value="5.0" />
+		<!-- data source to integrate (PointCloud2) -->
+		<remap from="cloud_in" to="cloud_pcd" />
+	</node>
+    
+    <!--node name="planner" pkg="ts3_path_planning" type="dijkstra_planner.py" output="screen"/>
+    <node name="follower" pkg="ts3_path_planning" type="path_follower.py" output="screen"/-->
+
+    <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find bluerov_path_planning)/rviz/rviz.rviz" output="screen"/-->
+
+</launch>

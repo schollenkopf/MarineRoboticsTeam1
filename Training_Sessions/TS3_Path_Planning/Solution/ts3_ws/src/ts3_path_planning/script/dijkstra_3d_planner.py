@@ -6,16 +6,17 @@ from nav_msgs.msg import OccupancyGrid, Odometry, Path
 from geometry_msgs.msg import Point, PoseStamped
 from geometry_msgs.msg import PointStamped
 from octomap_msgs.msg import Octomap
+from octomap_msgs import binary_octomap
 import numpy as np
 import math
 from threading import Lock
 
-class DijkstraPathPlanner:
+class Dijkstra3DPathPlanner:
     def __init__(self):
-        rospy.init_node('dijkstra_path_planner')
+        rospy.init_node('dijkstra_3d_path_planner')
         self.mutex = Lock()
 
-        self.map_sub = rospy.Subscriber('/occ_map', OccupancyGrid, self.map_callback)
+        self.map_sub = rospy.Subscriber('/octomap_binary', Octomap, self.map_callback)
         self.goal_sub = rospy.Subscriber('/move_base_simple/goal', PoseStamped, self.goal_callback, queue_size=1)
         self.start_sub = rospy.Subscriber('/bluerov2/pose_gt', Odometry, self.start_callback, queue_size=1)
         self.path_pub = rospy.Publisher('/path', Path, queue_size=10)
@@ -28,7 +29,27 @@ class DijkstraPathPlanner:
 
     def map_callback(self, msg):
         print("Planner got map")
-        self.map = msg
+        
+        self.octomap = msg
+
+        # Read the octomap binary data and load it in the octomap wrapper class
+        data = np.array(self.octomap.data, dtype=np.int8).tostring()
+        s = '# Octomap OcTree binary file\nid {}\n'.format(self.octomap.id)
+        s += 'size 42\nres {}\ndata\n'.format(self.octomap.resolution)
+        s += data
+
+        # An error is triggered because a wrong tree size has been specified in the
+        # header. We did not find a way to extract the tree size from the octomap msg
+        tree = self.octomap.OcTree(self.octomap.resolution)
+        tree.readBinary(s)
+        self.octree = tree
+
+    def is_point_occupied(self, point, radius=.5):
+        node = self.octree.search(point)
+        if self.octree.isNodeOccupied(node):
+            return True 
+        else:
+            return False
 
     def goal_callback(self, goal_msg):
         self.goal = goal_msg.pose.position
@@ -171,5 +192,5 @@ class DijkstraPathPlanner:
         rospy.spin()
 
 if __name__ == '__main__':
-    planner = DijkstraPathPlanner()
+    planner = Dijkstra3DPathPlanner()
     planner.run()

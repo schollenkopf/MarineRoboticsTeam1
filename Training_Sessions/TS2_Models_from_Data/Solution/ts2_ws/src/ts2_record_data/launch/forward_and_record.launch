@@ -1,5 +1,5 @@
 <launch>
-    <arg name="record_directory" default="/home/ubuntu/34763-autonomous-marine-robotics/Training_Sessions/TS2_Models_from_Data/"/>
+    <arg name="record_directory" default="/home/ubuntu/34763-autonomous-marine-robotics/Training_Sessions/TS2_Models_from_Data/Solution/"/>
 
     <node pkg="ts2_record_data"
           type="steps_forward.py"

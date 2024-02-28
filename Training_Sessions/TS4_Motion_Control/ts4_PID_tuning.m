@@ -1,6 +1,6 @@
-Kp = 0.3;
-Ki = 10.1;
-Kd = 0.0;
+Kp = 0.1;
+Ki = 0.01;
+Kd = 0.05;
 
 simout = sim("PID_tuning");
 
