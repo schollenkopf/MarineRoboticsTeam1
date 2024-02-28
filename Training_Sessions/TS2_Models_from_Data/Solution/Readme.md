@@ -24,3 +24,10 @@ roslaunch ts2_record_data forward_and_record.launch
 
 You should find the bag file at: '34763-autonomous-marine-robotics/Training_Sessions/TS2_Models_from_Data/Solution/'
 
+Then, you can:
+
+1. Visualize the velocity, thrust force and estimate the body-fixed force using 'Training_session_2_visualize_bag.m' 
+   The estimation is based on this [document](https://learn.inside.dtu.dk/d2l/common/dialogs/quickLink/quickLink.d2l?ou=187463&type=content&rcode=dtu-539439) from page 42
+2. Do system identification using: 'Training_session_2_Model_learning_Surge.mlx' 
+
+
