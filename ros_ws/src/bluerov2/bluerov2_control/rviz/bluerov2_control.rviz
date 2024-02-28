@@ -15,6 +15,9 @@ Panels:
         - /Path1
         - /Odometry2
         - /Odometry2/Shape1
+        - /Marker1
+        - /Marker2
+        - /Path2
       Splitter Ratio: 0.5
     Tree Height: 459
   - Class: rviz/Selection
@@ -135,6 +138,40 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        bluerov2/base_footprint:
+          Value: true
+        bluerov2/base_link:
+          Value: true
+        bluerov2/base_link_ned:
+          Value: true
+        bluerov2/base_stabilized:
+          Value: true
+        bluerov2/gps_link:
+          Value: true
+        bluerov2/imu_link:
+          Value: true
+        bluerov2/pose_sensor_link_default:
+          Value: true
+        bluerov2/pressure_link:
+          Value: true
+        bluerov2/thruster_0:
+          Value: true
+        bluerov2/thruster_1:
+          Value: true
+        bluerov2/thruster_2:
+          Value: true
+        bluerov2/thruster_3:
+          Value: true
+        bluerov2/thruster_4:
+          Value: true
+        bluerov2/thruster_5:
+          Value: true
+        map:
+          Value: true
+        world:
+          Value: true
+        world_ned:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 1.5
       Name: TF
@@ -142,7 +179,36 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        world:
+          bluerov2/base_footprint:
+            bluerov2/base_stabilized:
+              bluerov2/base_link:
+                bluerov2/base_link_ned:
+                  {}
+                bluerov2/gps_link:
+                  {}
+                bluerov2/imu_link:
+                  {}
+                bluerov2/pose_sensor_link_default:
+                  {}
+                bluerov2/pressure_link:
+                  {}
+                bluerov2/thruster_0:
+                  {}
+                bluerov2/thruster_1:
+                  {}
+                bluerov2/thruster_2:
+                  {}
+                bluerov2/thruster_3:
+                  {}
+                bluerov2/thruster_4:
+                  {}
+                bluerov2/thruster_5:
+                  {}
+          map:
+            {}
+          world_ned:
+            {}
       Update Interval: 0
       Value: true
     - Class: rviz/Marker
@@ -193,7 +259,7 @@ Visualization Manager:
       Marker Topic: /world_models
       Name: World model markers
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -428,7 +494,7 @@ Visualization Manager:
       Marker Topic: /robot_point_marker
       Name: Marker
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
@@ -436,8 +502,32 @@ Visualization Manager:
       Marker Topic: /next_point_marker
       Name: Marker
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Queue Size: 10
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic: /path
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
@@ -467,7 +557,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 678.08984375
+      Distance: 609.3111572265625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -505,5 +595,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1908
-  X: -33
-  Y: -52
+  X: -34
+  Y: -72
