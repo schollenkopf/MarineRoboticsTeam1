@@ -39,6 +39,6 @@
     <node pkg="tf" type="static_transform_publisher" name="world_to_map_tf_publisher" args="0 0 0 0 0 0 world map 100" output="screen"/>
 
     <!-- Start RViz  -->
-    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find ts3_path_planning)/rviz/bluerov2_control.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find ts3_path_planning)/rviz/rviz.rviz"/>
     
 </launch>
