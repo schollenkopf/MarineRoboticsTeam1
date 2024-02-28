@@ -120,5 +120,5 @@ In the simulator, you can also change the PID constants in these files:
 Tips for PID manual tuning:
 
 ![](/media/PID_table.png)
-![](/media/PID_Compensation_Animated.png)
+![](/media/PID_Compensation_Animated.gif)
 
