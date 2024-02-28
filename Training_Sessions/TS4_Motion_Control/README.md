@@ -103,7 +103,7 @@ Thank you for participating in Training Session 4! Feel free to reach out if you
 
 ## Cascaded PID:
 
-![](./media/PID_cascaded.png)
+![](/media/PID_cascaded.png)
 
 The PID controller implemented in the simulator is a cascaded controller for velocity and position control. The Matlab script and simulink are available (See: 'ts4_cascaded_PID_tuning.m' and 'Cascaded_PID_tuning.slx').
 
@@ -111,7 +111,7 @@ Moreover, there are saturation box after the PID controller boxes for limiting t
 
 Now, you have PID constant for both position and velocity control that you can tune in 'ts4_cascaded_PID_tuning.m'
 
-![](./media/PID_constant.png)
+![](/media/PID_constant.png)
 
 In the simulator, you can also change the PID constants in these files:
 - Training_Sessions\TS4_Motion_Control\ts4_ws\src\ts4_cascaded_pids\config\bluerov2\pos_pid_control.yaml
@@ -119,6 +119,6 @@ In the simulator, you can also change the PID constants in these files:
 
 Tips for PID manual tuning:
 
-![](./media/PID_table.png)
-![](./media/PID_Compensation_Animated.png)
+![](/media/PID_table.png)
+![](/media/PID_Compensation_Animated.png)
 
