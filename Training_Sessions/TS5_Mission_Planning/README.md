@@ -39,7 +39,7 @@ and choosing "View/Edit Home Reference". Change latitude and longitude to 55.603
 You can launch the stack from the bluerov2_bringup package:
 
 ```
-roslaunch bluerov2_bringup bringup_neptus_gazebo.launch rviz_on:=True gui_on:=False
+roslaunch bluerov2_bringup bringup_neptus_gazebo.launch rviz_on:=True gui_on:=False mode:=altimeter_sss
 ```
 
 ## Checking your system ##
