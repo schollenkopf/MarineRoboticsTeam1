@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 
 import rospy
@@ -16,7 +16,7 @@ from uuv_control_msgs.srv import InitWaypointSet, InitWaypointSetRequest, InitWa
 import numpy as np
 import imc_enums
 import hashlib
-from StringIO import StringIO
+from io import StringIO
 import time
 import tf2_geometry_msgs
 
@@ -27,8 +27,8 @@ class ImcInterface(object):
         self._plan_db = dict()
         self._current_plan = PlanDB()
         datum = rospy.get_param("~datum", [])
-        datum = map(float, datum.strip('][').split(',')) if type(datum) is str else datum
-        self._datum = None if len(datum) == 0 else GeoPoint(*map(float, datum))
+        datum = list(map(float, datum.strip('][').split(',')) if type(datum) is str else datum)
+        self._datum = None if len(datum) == 0 else GeoPoint(*datum)
         rospy.loginfo("Datum Reference: "+str(self._datum))
         self._estimated_state_pub = rospy.Publisher("imc/estimated_state", EstimatedState, queue_size=10)
         self._estimated_state_msg = EstimatedState()

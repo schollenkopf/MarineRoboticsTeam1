@@ -231,7 +231,7 @@
       </ray>
       <plugin name="sonar${suffix}_controller" filename="libgazebo_ros_laser.so">
         <topicName>${topic}${suffix}</topicName>
-        <frameName>sonar${suffix}_link</frameName>
+        <frameName>${namespace}/sonar${suffix}_link</frameName>
       </plugin>
     </sensor>
   </gazebo>
