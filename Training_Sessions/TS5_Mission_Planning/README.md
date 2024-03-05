@@ -55,6 +55,6 @@ With Neptus and the bluerov2_bringup stack running:
 Additionally you can confirm the ROS <-> Neptus bridge is working by echoing the heartbeat:
 
 ```
-rostopic echo /bluerov2/imc/heartbeat
+rostopic echo /bluerov2/imc/imc_heartbeat
 ```
 
