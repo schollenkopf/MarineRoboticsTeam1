@@ -4,12 +4,12 @@ In this tutorial we'll explore how to utilize the perception system to improve r
 We will compare the robot localization by only using the IMU and adding correction using AruCo markers.
 
 What is AruCo Marker?
-![](./media/aruco_marker.png)
-![](./media/aruco_gazebo.png)
-![](./media/marker_placing.png)
+![](assets/aruco_marker.png)
+![](assets/aruco_gazebo.png)
+![](assets/marker_placing.png)
 
 Localization architecture:
-![](./media/TS6_diagram.png)
+![](assets/TS6_diagram.png)
 
 ## Pre-requisites ##
 
@@ -47,7 +47,7 @@ roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
 
 After controlling the robot for some time, you will notice that the estimated position will increasingly deviate from the ground truth.
 
-![](./media/ts6_imu_only.png)
+![](assets/ts6_imu_only.png)
 
 Note on Rviz:
 The red marker is the ground truth position.
@@ -70,7 +70,7 @@ roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
 
 Control the robot to a location where it cannot observe the AruCo markers for a period of time until the estimated position deviates. Then, guide the robot back to the area where it can detect the AruCo markers.
 
-![](./media/ts6_with_aruco_markers.png)
+![](assets/ts6_with_aruco_markers.png)
 
 ## Simulating underwater dark environment ###
 
@@ -81,4 +81,4 @@ roslaunch ts6_bluerov2_perception run.launch gui:=false fiducial_correction:=tru
 
 You should see that the aruco detector is not stable estimating the position of the markers.
 
-![](./media/dark_underwater.png)
+![](assets/dark_underwater.png)
