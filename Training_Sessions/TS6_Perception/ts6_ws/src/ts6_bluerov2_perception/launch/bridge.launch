@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="world" default="$(find bluerov2_description)/worlds/ocean_waves.world"/>
+    <arg name="scenario" default="default"/>
+    <arg name="world" default="$(find ts6_bluerov2_perception)/worlds/ocean_waves_$(arg scenario).world"/>
     <arg name="gui" default="true"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">

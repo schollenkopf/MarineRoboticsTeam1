@@ -3,6 +3,14 @@
 In this tutorial we'll explore how to utilize the perception system to improve robot localization.
 We will compare the robot localization by only using the IMU and adding correction using AruCo markers.
 
+What is AruCo Marker?
+![](./media/aruco_marker.png)
+![](./media/aruco_gazebo.png)
+![](./media/marker_placing.png)
+
+Localization architecture:
+![](./media/TS6_diagram.png)
+
 ## Pre-requisites ##
 
 Update your docker workspace following [these instructions](https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-robotics/-/tree/main/#getting-course-updates).
@@ -39,9 +47,11 @@ roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
 
 After controlling the robot for some time, you will notice that the estimated position will increasingly deviate from the ground truth.
 
+![](./media/ts6_imu_only.png)
+
 Note on Rviz:
 The red marker is the ground truth position.
-The green marker is the estimated position
+The green marker is the estimated position.
 
 Debugging:
 If you got errors that contains "\r", please go to this [following guide](https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-robotics/-/tree/main/debugging.md)
@@ -59,3 +69,16 @@ roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
 ```
 
 Control the robot to a location where it cannot observe the AruCo markers for a period of time until the estimated position deviates. Then, guide the robot back to the area where it can detect the AruCo markers.
+
+![](./media/ts6_with_aruco_markers.png)
+
+## Simulating underwater dark environment ###
+
+# Start the simulator
+```
+roslaunch ts6_bluerov2_perception run.launch gui:=false fiducial_correction:=true scenario:=dark
+```
+
+You should see that the aruco detector is not stable estimating the position of the markers.
+
+![](./media/dark_underwater.png)
