@@ -37,7 +37,8 @@ class PathFollower:
             if self.desired_path is not None and self.current_pose is not None:
                 current_position = np.array([
                     self.current_pose.position.x,
-                    self.current_pose.position.y
+                    self.current_pose.position.y,
+                    self.current_pose.position.z
                 ])
                 current_orientation = self.current_pose.orientation
                 _, _, current_yaw = euler_from_quaternion([
@@ -64,13 +65,15 @@ class PathFollower:
                 filtered_path = self.desired_path.poses[closest_point_idx:]
                 filtered_path = [pose.pose.position for pose in filtered_path if np.linalg.norm(current_position - np.array([
                     pose.pose.position.x,
-                    pose.pose.position.y
+                    pose.pose.position.y,
+                    pose.pose.position.z
                 ])) > self.GOAL_TOLERANCE]
 
                 if len(filtered_path) > 1:
                     next_point = np.array([
                         filtered_path[1].x,
-                        filtered_path[1].y
+                        filtered_path[1].y,
+                        filtered_path[1].z
                     ])
                     
                     self.publish_next_goal_marker(next_point)
@@ -84,17 +87,20 @@ class PathFollower:
                     # Calculate desired linear and angular velocities
                     dx = next_point[0] - current_position[0]
                     dy = next_point[1] - current_position[1]
+                    dz = next_point[2] - current_position[2]
                     dx_body = dx*np.cos(current_yaw)+dy*np.sin(current_yaw)
                     dy_body = -dx*np.sin(current_yaw)+dy*np.cos(current_yaw)
                     distance_to_goal = np.linalg.norm(next_point - current_position)
 
                     desired_linear_velocity_x = self.LINEAR_GAIN * (dx_body)
                     desired_linear_velocity_y = self.LINEAR_GAIN * (dy_body)
+                    desired_linear_velocity_z = self.LINEAR_GAIN * (dz)
                     desired_angular_velocity = self.TURNING_GAIN * angle_error
 
                     cmd_vel_msg = Twist()
                     cmd_vel_msg.linear.x = desired_linear_velocity_x
                     cmd_vel_msg.linear.y = desired_linear_velocity_y
+                    cmd_vel_msg.linear.z = desired_linear_velocity_z
                     cmd_vel_msg.angular.z = desired_angular_velocity
 
                     self.cmd_vel_pub.publish(cmd_vel_msg)

@@ -42,3 +42,23 @@ See: 'exe4_1_sampling_based.ipynb'
 
 ## Exercise 4.2: 
 Under construction...
+
+Open the Gazebo, robot, controllers and visualizers
+```
+roslaunch bluerov2_gazebo start_pid_demo_lake.launch
+```
+
+Publish the octomap:
+```
+rosrun octomap_server octomap_server_node /home/ubuntu/34763-autonomous-marine-robotics/ros_ws/src/grid_map/grid_map_pcl/data/input_cloud.bt _frame_id:=map
+```
+
+Run the path planner and path follower:
+```
+roslaunch ts3_path_planning run_3d.launch
+```
+
+Publish the goal position
+```
+roslaunch ts3_path_planning publish_goal.launch
+```

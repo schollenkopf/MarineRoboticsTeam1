@@ -139,3 +139,4 @@ Training_Sessions/TS4_Motion_Control/ts4_ws/src/CMakeLists.txt
 Training_Sessions/TS3_Path_Planning/Solution/ts3_ws/src/CMakeLists.txt
 Training_Sessions/TS5_Mission_Planning/neptus
 Training_Sessions/TS5_Mission_Planning/ts5_ros_ws/src/CMakeLists.txt
+Training_Sessions/TS6_Perception/ts6_ws/src/CMakeLists.txt
