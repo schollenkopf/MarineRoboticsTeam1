@@ -24,8 +24,9 @@ Update your docker workspace following [these instructions](https://gitlab.gbar.
 In your docker container workspace run the following (you should only have to run this once):
 
 ```
-cd $HOME/34763-autonomous-marine-robotics/Training_Sessions/TS6_Perception
-source update_ts6.sh
+cd $HOME/34763-autonomous-marine-robotics/Training_Sessions/TS6_Perception/ts6_ws
+chmod +x update_ts6.sh
+./update_ts6.sh
 ```
 
 ## Localization using IMU ###

@@ -4,7 +4,6 @@ sudo apt-get install ros-noetic-aruco -y
 sudo apt-get install ros-noetic-aruco-ros -y
 sudo apt-get install ros-noetic-fiducial-slam -y
 
-cd ts6_ws
 catkin_make
 source devel/setup.bash
 
@@ -23,4 +22,4 @@ if [ $? -ne 0 ]; then
     echo "$cmd" >> $HOME/.bashrc
 fi
 
-source $HOME/.bashrc
+. /home/ubuntu/.bashrc
