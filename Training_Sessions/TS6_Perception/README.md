@@ -27,6 +27,7 @@ In your docker container workspace run the following (you should only have to ru
 cd $HOME/34763-autonomous-marine-robotics/Training_Sessions/TS6_Perception/ts6_ws
 chmod +x update_ts6.sh
 ./update_ts6.sh
+. $HOME/.bashrc
 ```
 
 ## Localization using IMU ###
