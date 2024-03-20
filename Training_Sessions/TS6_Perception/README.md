@@ -78,6 +78,9 @@ Control the robot to a location where it cannot observe the AruCo markers for a 
 
 ## Simulating in dark underwater ###
 
+![](assets/dark_underwater.png)
+
+
 ### Start the simulator
 ```
 roslaunch ts6_bluerov2_perception run.launch gui:=false fiducial_correction:=true scenario:=dark
@@ -85,4 +88,3 @@ roslaunch ts6_bluerov2_perception run.launch gui:=false fiducial_correction:=tru
 
 You should see that the aruco detector is not stable estimating the position of the markers.
 
-![](assets/dark_underwater.png)
