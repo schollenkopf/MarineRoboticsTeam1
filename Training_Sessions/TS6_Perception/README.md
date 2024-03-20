@@ -6,7 +6,9 @@ We will compare the robot localization by only using the IMU and adding correcti
 What is AruCo Marker?
 
 ![](assets/aruco_marker.png)
+
 ![](assets/aruco_gazebo.png)
+
 ![](assets/marker_placing.png)
 
 Localization architecture:
@@ -52,8 +54,8 @@ After controlling the robot for some time, you will notice that the estimated po
 ![](assets/ts6_imu_only.png)
 
 #### Note on Rviz:
-The red marker is the ground truth position.
-The green marker is the estimated position.
+The red path is the ground truth position.
+The green path is the estimated position.
 
 #### Debugging:
 If you got errors that contains "\r", please go to this [following guide](https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-robotics/-/tree/main/debugging.md)
@@ -74,7 +76,7 @@ Control the robot to a location where it cannot observe the AruCo markers for a 
 
 ![](assets/ts6_with_aruco_markers.png)
 
-## Simulating underwater dark environment ###
+## Simulating in dark underwater ###
 
 ### Start the simulator
 ```
