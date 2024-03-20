@@ -29,12 +29,12 @@ catkin_package(
   CATKIN_DEPENDS roscpp std_msgs geometry_msgs message_runtime  # Add 'message_runtime' for message generation
 )
 
-#catkin_install_python(PROGRAMS 
-#  src/pose_stamped_to_path.py
-#  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-#)
-
 ## Build talker and listener
 include_directories(
   ${catkin_INCLUDE_DIRS}
+)
+
+catkin_install_python(PROGRAMS 
+  script/imu_analysis.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
