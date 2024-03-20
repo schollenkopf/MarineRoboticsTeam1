@@ -60,6 +60,27 @@ The green path is the estimated position.
 #### Debugging:
 If you got errors that contains "\r", please go to this [following guide](https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-robotics/-/tree/main/debugging.md)
 
+## Adjusting the EKF Parameters ##
+
+Now, it's time to fine-tune the process noise covariance value in the Extended Kalman Filter (EKF).
+
+To do this, navigate to the IMU simulator properties located at "ros_ws/src/uuv_simulator/uuv_sensor_plugins/uuv_sensor_ros_plugins/urdf/imu_snippets.xacro":
+
+![](assets/imu_simulator.png)
+
+Next, modify the ROS parameter associated with the EKF in "ts6_ws/src/ts6_bluerov2_perception/config/ekf_params_imu_only.yaml".
+
+Configure the IMU variables to be incorporated into the final state estimate through the "imu0_config" parameter. The boolean values represent the following dimensions in order: x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az.
+
+Currently, the IMU configuration is set to 2D:
+
+![](assets/imu_config.png)
+
+You can adjust the process noise covariance using the "process_noise_covariance" parameter, following the same order of boolean values as mentioned above:
+![](assets/process_noise_covariance.png)
+
+For more detailed information on these parameters, refer to the documentation available at this [link](https://docs.ros.org/en/melodic/api/robot_localization/html/state_estimation_nodes.html)
+
 ## Correction with AruCo markers ###
 
 ### Start the simulator
@@ -88,3 +109,7 @@ roslaunch ts6_bluerov2_perception run.launch gui:=false fiducial_correction:=tru
 
 You should see that the aruco detector is not stable estimating the position of the markers.
 
+
+## Extend to 3D localization ###
+
+The current EKF setup is limited to 2D. Let's enhance it to 3D by enabling the roll, pitch, and altitude variables in the configuration file located at "ts6_ws\src\ts6_bluerov2_perception\config". Additionally, ensure to fine-tune the process noise covariance value accordingly.
