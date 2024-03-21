@@ -54,6 +54,8 @@ This launch file initiates several processes including:
   ```
   This script initially commands forward velocity and then introduces two heading changes (+/- 20 degrees).
 
+- You should see the reference and the output response are plotted in `rqt_plot`.
+
 - Ensure that the BAG file is generated and saved to `~/34763-autonomous-marine-robotics/Training_Sessions/TS4_Motion_Control/`.
 
 ### Step 4: Visualizing Data in MATLAB
@@ -67,9 +69,6 @@ This launch file initiates several processes including:
 ![](/media/matlab_yaw_control.png)
 
 Use "Data Tips" to analyze rise time, overshoot, and settling time.
-
-<!-- ### Step 5: System Identification
-Execute the system identification script from Training Session 2 (`Training_session_2_Model_learning_Heading.mlx`) to obtain the state space or transfer function of the open-loop model. -->
 
 ### Step 5: Tuning PID Controller in Simulink
 
