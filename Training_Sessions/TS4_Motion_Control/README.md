@@ -42,7 +42,7 @@ This launch file initiates several processes including:
   
 > Note: The Gazebo GUI is now turned off, you can turn it on by `gui:=true`
 
-### Step 3: Running the ROS Node
+### Step 3: Running the ROS Node for Sending Setpoint Reference to the Robot
 - Open another terminal by opening a new tab.
 - Source the compiled file:
   ```
