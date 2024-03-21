@@ -36,5 +36,6 @@ include_directories(
 
 catkin_install_python(PROGRAMS 
   script/imu_analysis.py
+  script/pressure_to_depth.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

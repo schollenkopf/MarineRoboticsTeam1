@@ -51,6 +51,7 @@
     </group>
 
     <node pkg="tf" type="static_transform_publisher" name="world0_to_world_tf_publisher" args="0 0 -23 0 0 0 world odom 100" />
+    <!--node pkg="ts6_bluerov2_perception" type="pressure_to_depth.py" name="pressure_to_depth" output="screen" /-->
     
     <!-- Start RViz  -->
     <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find ts6_bluerov2_perception)/rviz/bluerov2_perception.rviz"/>

@@ -25,6 +25,7 @@ catkin_package(
 catkin_install_python(PROGRAMS scripts/AccelerationControl.py
                                scripts/PositionControl.py
                                scripts/VelocityControl.py
+                               scripts/ts4_command.py
                       DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY launch config cfg

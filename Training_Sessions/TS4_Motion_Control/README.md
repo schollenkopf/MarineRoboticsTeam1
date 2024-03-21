@@ -31,7 +31,7 @@ Begin by starting your Docker container.
   ```
 - Launch the simulator by running:
   ```
-  roslaunch ts4_pid_tuning start_pid_demo.launch gui:=false
+  roslaunch ts4_cascaded_pid start_pid_demo.launch gui:=false
   ```
 This launch file initiates several processes including:
   - Spawning the robot in Gazebo.
@@ -50,7 +50,7 @@ This launch file initiates several processes including:
   ```
 - Execute the ROS node to publish velocity and position references to the robot:
   ```
-  rosrun ts4_pid_tuning ts4_command.py
+  rosrun ts4_cascaded_pid ts4_command.py
   ```
   This script initially commands forward velocity and then introduces two heading changes (+/- 20 degrees).
 
@@ -60,10 +60,11 @@ This launch file initiates several processes including:
 - Open MATLAB and run `Training_session_4_visualize_bag.m`.
 - Modify the `BAG_FILENAME` variable as needed.
 
-![](media/matlab_script_bag_file.png)
+![](/media/matlab_script_bag_file.png)
+
 - This script visualizes the response of the position and velocity control.
 
-![](media/matlab_yaw_control.png)
+![](/media/matlab_yaw_control.png)
 
 Use "Data Tips" to analyze rise time, overshoot, and settling time.
 
@@ -72,10 +73,10 @@ Execute the system identification script from Training Session 2 (`Training_sess
 
 ### Step 5: Tuning PID Controller in Simulink
 
-Open the MATLAB file `ts4_PID_tuning.m`.
+Open the MATLAB file `ts4_cascaded_PID_tuning.m`.
 
 This file will 
-  - Set the `Kp`, `Ki` & `Kd` parameters of the PID heading controller 
+  - Set the `Kp`, `Ki` & `Kd` parameters of the PID heading position and velocity controller 
   - Simulate a step response of the system (we use the identified heading model that you calculated in Training Session 2)
   - Plot the values of the step reference (`ref`) and the system output (`y`)
 
@@ -83,17 +84,32 @@ You task is now to play with the `Kp`, `Ki` & `Kd` parameters, untill you achiev
 
 ### Step 6: Deploying PID Constants in ROS Simulator
 Update the PID constants for the position and velocity controllers in the following YAML files:
-- Position controller: `~/34763-autonomous-marine-robotics/Training_Sessions/TS4_Motion_Control/ts4_ws/src/ts4_pid_tuning/config/pos_pid_control.yaml`
+- Position controller: `~/34763-autonomous-marine-robotics/Training_Sessions/TS4_Motion_Control/ts4_ws/src/ts4_cascaded_pids/config/bluerov2/pos_pid_control.yaml`
+- Velocity controller: `~/34763-autonomous-marine-robotics/Training_Sessions/TS4_Motion_Control/ts4_ws/src/ts4_cascaded_pids/config/bluerov2/vel_pid_control.yaml`
+
+Moreover, there are saturation box after the PID controller boxes for limiting the control input. One of the reason why this saturation mechanism is usually used is because the input control of the robot is limited.
 
 The lines that you need to change af the following:
 
 ```yaml
-position_control/rot_p: <Kp>
-position_control/rot_i: <Ki>
-position_control/rot_d: <Kd>
+position_control/rot_p: <Kp_pos>
+position_control/rot_i: <Kp_pos>
+position_control/rot_d: <Kd_pos>
+position_control/rot_sat: <sat_pos>
+```
+
+and
+
+```yaml
+velocity_control/angular_d: <Kp_vel>
+velocity_control/angular_i: <Kp_vel>
+velocity_control/angular_p: <Kp_vel>
+velocity_control/angular_sat: <sat_vel>
 ```
 
 Where you insert the parameters that you obtained in MATLAB.
+
+![](/media/PID_constant.png)
 
 ### Step 7: Analyzing Results
 Repeat steps 2 and 3, and engage in discussions based on the observed results.
@@ -107,15 +123,6 @@ Thank you for participating in Training Session 4! Feel free to reach out if you
 
 The PID controller implemented in the simulator is a cascaded controller for velocity and position control. The Matlab script and simulink are available (See: 'ts4_cascaded_PID_tuning.m' and 'Cascaded_PID_tuning.slx').
 
-Moreover, there are saturation box after the PID controller boxes for limiting the control input. One of the reason why this saturation mechanism is usually used is because the actuator of the robot is limited.
-
-Now, you have PID constant for both position and velocity control that you can tune in 'ts4_cascaded_PID_tuning.m'
-
-![](/media/PID_constant.png)
-
-In the simulator, you can also change the PID constants in these files:
-- Training_Sessions\TS4_Motion_Control\ts4_ws\src\ts4_cascaded_pids\config\bluerov2\pos_pid_control.yaml
-- Training_Sessions\TS4_Motion_Control\ts4_ws\src\ts4_cascaded_pids\config\bluerov2\vel_pid_control.yaml
 
 Tips for PID manual tuning:
 
