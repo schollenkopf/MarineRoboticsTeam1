@@ -1,0 +1,31 @@
+<launch>
+    <!-- Flag to start recoding a rosbag  -->
+    <arg name="gui" default="true"/>
+
+    <!-- Initial position and heading of the vehicle (wrt Gazebo's inertial frame)  -->
+    <arg name="x" default="0"/>
+    <arg name="y" default="3.3"/>
+    <arg name="z" default="-10"/>
+    <arg name="yaw" default="0.0"/>
+
+    <arg name="use_ned_frame" default="false"/>
+    <arg name="record_directory" default="/home/ubuntu/34763-autonomous-marine-robotics/Training\ Sessions/TS4\ Motion\ Control/"/>
+
+    <!-- Initialize the Gazebo world  -->
+    <include file="$(find bluerov2_description)/launch/bridge.launch">
+        <arg name="gui" default="$(arg gui)"/>
+    </include>
+
+    <!-- Add the BlueROV2 vehicle to the world  -->
+    <include file="$(find bluerov2_description)/launch/upload.launch">
+        <arg name="x" default="$(arg x)"/>
+        <arg name="y" default="$(arg y)"/>
+        <arg name="z" default="$(arg z)"/>
+        <arg name="yaw" default="$(arg yaw)"/>
+        <arg name="use_ned_frame" value="$(arg use_ned_frame)"/>
+    </include>
+
+    <!-- Start RViz  -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find bluerov2_control)/rviz/bluerov2_control.rviz"/>
+    
+</launch>

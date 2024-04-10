@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="sphere">
+  <link name="sphere">
+    <inertial>
+      <origin
+        xyz="0 3 -10.5"
+        rpy="0 0 0" />
+      <mass
+        value="140" />
+      <inertia
+        ixx="7977300000"
+        ixy="331.130000000001"
+        ixz="-12662"
+        iyy="23096000000"
+        iyz="-18784.0000003976"
+        izz="16602000000" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 3 -10.5"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="1.0"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 3 -10.5"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="1.0"/>
+      </geometry>
+    </collision>
+    
+  </link>
+   <gazebo reference="sphere">
+    <material>Gazebo/Red</material>
+  </gazebo>
+</robot>

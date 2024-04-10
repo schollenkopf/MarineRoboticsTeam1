@@ -8,7 +8,9 @@
         <arg name="gui" value="$(arg gui)"/>
     </include>
 
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find bluerov2_description)/urdf/bridge2.urdf"/>
+   
 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-param robot_description -urdf -model bridge"/>
+    <param name="sphere_description" command="$(find xacro)/xacro --inorder $(find bluerov2_description)/urdf/sphere.urdf"/>
+
+    <node name="spawn_sphere" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-param sphere_description -urdf -model sphere"/>
 </launch> 
